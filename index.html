@@ -3,70 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>Talha Seven - Frontend Developer</title>
+    <title>Erdem's Ödevs</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem;
+        font-family: sans-serif;
+        background-color: #f2f2f2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        margin-bottom: 2rem;
+        font-size: 1.8rem;
+        color: #222;
+      }
+
+      .odev-link {
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        background: white;
+        padding: 1rem 1.5rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        transition: all 0.2s ease;
+      }
+      img.gif {
+        width: 200px;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+      }
+      .odev-link:hover {
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+    </style>
   </head>
   <body>
-    <div class="container">
-      <h1>TALHA SE7EN</h1>
-      <div class="meslek">Frontend Developer</div>
-      <div class="linkler">
-        <a href="#">github</a>
-        <span style="opacity: 0.5"> | </span>
-        <a href="#">linkedin</a>
-      </div>
-
-      <div class="section">
-        <div class="section-title"><span class="bar"></span>Hakkımda</div>
-        <div class="section-content">
-          Merhaba! Ben Talha, HTML ve CSS öğrenmeye meraklı bir geliştiriciyim.
-          Şu anda frontend geliştirme becerilerimi geliştiriyorum.
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="section-title"><span class="bar"></span>Yetenekler</div>
-        <div class="yetenek">
-          <span class="yetenek-bg">HTML5</span>
-          <span class="yetenek-bg">CSS3</span>
-          <span class="yetenek-bg">Responsive Tasarım</span>
-          <span class="yetenek-bg">JavaScript (Temel)</span>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="section-title"><span class="bar"></span>Eğitim</div>
-        <div class="section-content">
-          <table class="edu-table">
-            <tr>
-              <th>OKUL</th>
-              <th>BÖLÜM</th>
-              <th>YIL</th>
-            </tr>
-            <tr>
-              <td>SEVEN Üniversitesi</td>
-              <td>Bilgisayar Mühendisliği</td>
-              <td>2021</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="section-title"><span class="bar"></span>İletişim</div>
-        <form class="form-box">
-          <input type="text" placeholder="Adınız" name="ad" />
-          <input type="email" placeholder="E-posta" name="eposta" />
-          <textarea placeholder="Mesajınız" name="mesaj"></textarea>
-          <button type="submit">GÖNDER</button>
-        </form>
-      </div>
-    </div>
+    <img
+      class="gif"
+      src="https://media1.tenor.com/m/NPeWMu0NNl8AAAAd/cat-typing.gif"
+      alt="Typing Cat"
+    />
+    <h1>Erdem's Ödevs</h1>
+    <a class="odev-link" href="odev2_profilescards/">Ödev 2: Profil Kartları</a>
+    <a class="odev-link" href="odev1_personalwebcard/"
+      >Ödev 1: Kişisel Web Kartı</a
+    >
   </body>
 </html>
