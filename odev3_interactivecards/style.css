@@ -1,0 +1,131 @@
+:root {
+  --erdemcolor: rgba(216, 236, 255, 0.92);
+  --sinancolor: rgba(204, 234, 222, 0.92);
+  --elifcolor: rgba(255, 239, 209, 0.92);
+
+  --backgroundcolor: #2f3645;
+  --buttonbackground: #3b82f6cc;
+  --buttontextcolor: #ffffff;
+  --cardbackground: #ffffff;
+  --textcolor: black;
+}
+
+:root {
+  --backgroundcolor: #1c1f26;
+  --erdemcolor: rgba(88, 102, 132, 0.9);
+  --sinancolor: rgba(72, 156, 143, 0.9);
+  --elifcolor: rgba(150, 82, 110, 0.9);
+  --buttonbackground: #ff7f50cc;
+  --buttontextcolor: #f0f0f0;
+  --cardbackground: #2a2d36;
+  --textcolor: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: var(--backgroundcolor);
+  margin: 0;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2rem;
+  color: white;
+  text-shadow: 0 3px 0 black;
+  margin: 20px;
+  margin-bottom: 70px;
+  padding: 20px;
+}
+
+h2 {
+  color: var(--textcolor);
+  font-size: 1.5rem;
+  margin: 15px;
+  text-align: left;
+}
+
+.team-container {
+  display: flex;
+  gap: 5px;
+  max-width: 1000px;
+  text-align: center;
+  margin: auto;
+}
+
+.card:hover {
+  outline: 3px solid #f5f5f5e9;
+  outline-offset: 3px;
+  transform: translateY(-8px);
+}
+
+.card p {
+  color: var(--textcolor);
+  text-align: left;
+  margin: 15px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--buttonbackground);
+  color: var(--buttontextcolor);
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 16px;
+  text-align: center;
+  transition: 0.2s;
+  user-select: none;
+  min-width: 80%;
+  margin: 0 0 20px;
+}
+
+.button:hover {
+  transform: translateY(-4px);
+  background-color: #046aaa;
+}
+
+.button:focus {
+  outline: 2px solid blue;
+}
+
+.card_top {
+  height: 170px;
+  margin-bottom: 20px;
+  border-radius: 20px 20px 0 0;
+}
+
+#erdem {
+  background-color: var(--erdemcolor);
+}
+
+#sinan {
+  background-color: var(--sinancolor);
+}
+
+#elif {
+  background-color: var(--elifcolor);
+}
+
+.card {
+  background: var(--cardbackground);
+  width: 300px;
+  display: inline-block;
+  margin: auto;
+  border-radius: 20px;
+  position: relative;
+  text-align: center;
+  box-shadow: -1px 15px 30px -12px black;
+}
+
+img {
+  border-radius: 12px 12px 0 0;
+  width: 230px;
+  transform: scale(1.3) translateY(-43px);
+  filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.5));
+}

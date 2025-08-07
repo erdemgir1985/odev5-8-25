@@ -14,7 +14,7 @@ body {
 h1 {
   font-size: 2rem;
   color: white;
-  text-shadow: black;
+  text-shadow: 0 3px 0 black;
   margin: 20px;
   padding: 20px;
 }
