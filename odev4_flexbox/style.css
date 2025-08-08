@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: var(--backgroundcolor);
+  margin: 0;
+  min-height: 100vh;
+}
+
+.services {
+  display: flex;                /* Flexbox aktif */
+  flex-direction: row;          /* Yan yana */
+  flex-wrap: wrap;               /* Taşarsa alt satıra geç */
+  justify-content: space-between;/* Aralar boşluk */
+  align-items: stretch;          /* Yükseklik eşit */
+  gap: 20px;                     /* Kutular arası boşluk */
+  padding: 20px;
+  background: #f7f7f7;
+}
+
+.card {
+  flex-basis: 30%;               /* Başlangıç genişliği */
+  flex-grow: 1;                  /* Boş alan varsa büyüsün */
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;                 /* İçindeki yazılar dikey düzen */
+  flex-direction: column;        
+  justify-content: space-between;
+  transition: transform 0.3s ease; /* Hover efekti */
+}
+
+.card:hover {
+  transform: translateY(-5px);  /* Hover’da yukarı çıksın */
+}
+
+.card:nth-child(3) {
+  align-self: center;           /* Bu kart ortalansın */
+}
+
+.card {
+  flex-shrink: 0; /* Kartlar küçülmesin */
+}
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--buttonbackground);
+  color: var(--buttontextcolor);
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 16px;
+  text-align: center;
+  transition: 0.2s;
+  user-select: none;
+  min-width: 80%;
+}
