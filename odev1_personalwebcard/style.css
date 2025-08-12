@@ -4,6 +4,23 @@
   box-sizing: border-box;
 }
 
+@media (max-width: 400px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+  }
+  
+  th {
+    background: #eee;
+    text-align: left;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+}
+
 body {
   background: linear-gradient(330deg, #8a44f3 20%, #3c8ce7 100%);
   margin: 0;
@@ -11,61 +28,64 @@ body {
   min-height: 100vh;
 }
 
+nav {
+  background-color: #222;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+}
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.nav-left a,
+.nav-left p {
+  color: white;
+  text-decoration: none;
+  margin: 0;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.nav-left a:hover {
+  color: #ff9800;
+}
+/* Sağ taraftaki sosyal medya */
+.social-links a {
+  margin-left: 15px;
+  color: white;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+.social-links a svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+  transition: fill 0.3s;
+}
+.social-links a:hover svg {
+  fill: #ff9800;
+}
+/* SVG ikonlar */
+svg {
+  width: 18px;
+  height: 18px;
+}
 
-  nav {
-    background-color: #222;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 20px;
-  }
-  .nav-left {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  .nav-left a, .nav-left p {
-    color: white;
-    text-decoration: none;
-    margin: 0;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  .nav-left a:hover {
-    color: #ff9800;
-  }
-  /* Sağ taraftaki sosyal medya */
-  .social-links a {
-    margin-left: 15px;
-    color: white;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-  }
-  .social-links a svg {
-    width: 20px;
-    height: 20px;
-    fill: white;
-    transition: fill 0.3s;
-  }
-  .social-links a:hover svg {
-    fill: #ff9800;
-  }
-  /* SVG ikonlar */
-  svg {
-    width: 18px;
-    height: 18px;
-  }
+
+
 .container {
   background: #fff;
-  max-width: 650px;
   margin: 2.5rem auto;
   border-radius: 1rem;
   box-shadow: 0 0.5rem 2rem rgba(44, 62, 80, 0.15);
   padding: 28px;
+  max-width: calc(100% - 50px);
 }
 
 h1 {
@@ -88,12 +108,12 @@ h1 {
 }
 .linkler a {
   display: inline-block;
-  border: 2px solid #3c8ce7; 
+  border: 2px solid #3c8ce7;
   color: #3c8ce7;
   background: #fff;
-  border-radius: 20px; 
-  padding: 6px 18px; 
-  margin: 0 6px; 
+  border-radius: 20px;
+  padding: 6px 18px;
+  margin: 0 6px;
   text-decoration: none;
   font-weight: 500;
   transition: background 0.2s, color 0.2s;
@@ -124,10 +144,10 @@ h1 {
 }
 
 .section-content {
-    background: rgba(21, 62, 124, 0.042);    
-    border-radius: 8px;
-    padding: 12px 10px;
-    margin-bottom: 1rem;
+  background: rgba(21, 62, 124, 0.042);
+  border-radius: 8px;
+  padding: 12px 10px;
+  margin-bottom: 1rem;
 }
 
 .yetenek {
@@ -147,7 +167,6 @@ h1 {
 .edu-table {
   width: 100%;
   margin-bottom: 1.5em;
-  
 }
 .edu-table th {
   background: #34495e;

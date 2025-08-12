@@ -73,8 +73,10 @@ h2 {
   text-align: left;
 }
 
+
 .team-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 5px;
   max-width: 970px;
   text-align: center;
@@ -83,13 +85,25 @@ h2 {
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
-  margin: auto;
   text-align: center;
-  font-family: arial;
   background-color: white;
+  max-width: 300px;
   border-radius: 12px;
   transition: 0.2s;
+  flex: 1 1 30%; 
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex: 1 1 50%;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    flex: 1 1 100%;
+  }
 }
 
 .card:hover {
