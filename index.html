@@ -1,363 +1,191 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-bs-theme="dark">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Erdem's Ödevs</title>
-<style>
-:root {
-  --bg-color: #0a0e27;            /* Derin gece mavisi */
-  --text-color: #e1e8f7;          /* Açık mavi-beyaz */
-  --primary-color: #4fc3f7;       /* Parlak cyan mavisi */
-  --hover-bg-color: #1a1f3a;      /* Koyu lacivert */
-  --border-color: #2196f3;        /* Klasik mavi */
-  --highlight-color: #00bcd4;     /* Teal cyan */
-  --tooltip-bg-color: #0d1421;    /* Çok koyu lacivert */
-  --accent-color: #03dac6;        /* Matrix yeşil-cyan */
-  --code-blue: #64b5f6;          /* Kod mavisi */
-}
-
-  body {
-    margin: 0;
-    padding: 2rem;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
-    background: linear-gradient(135deg, var(--bg-color) 0%, #0f1535 50%, #1a1f3a 100%);
-    color: var(--text-color);
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 3rem;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-  }
-
-  /* Animated background particles */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-      radial-gradient(circle at 20% 80%, rgba(79, 195, 247, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(33, 150, 243, 0.06) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(0, 188, 212, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 60% 70%, rgba(3, 218, 198, 0.04) 0%, transparent 50%);
-    z-index: -1;
-    animation: float 25s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(20px, -20px) rotate(90deg); }
-    50% { transform: translate(-15px, 25px) rotate(180deg); }
-    75% { transform: translate(25px, -10px) rotate(270deg); }
-  }
-
-  img.gif {
-    width: 200px;
-    border-radius: 16px;
-    margin-bottom: 1.5rem;
-    box-shadow: 
-      0 10px 30px rgba(0, 0, 0, 0.4),
-      0 0 25px rgba(79, 195, 247, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-    border: 2px solid rgba(79, 195, 247, 0.4);
-    background: linear-gradient(145deg, rgba(26, 31, 58, 0.3), rgba(13, 20, 33, 0.5));
-  }
-
-  img.gif:hover {
-    transform: scale(1.05) rotate(2deg);
-    box-shadow: 
-      0 15px 40px rgba(0, 0, 0, 0.5),
-      0 0 35px rgba(79, 195, 247, 0.5),
-      0 0 60px rgba(0, 188, 212, 0.2);
-    border-color: var(--accent-color);
-  }
-
-  /* Sol kolon */
-  .left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 2;
-  }
-
-  .tooltip-bg {
-    position: fixed;
-    right: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: calc(100% - 540px);
-    min-height: 400px;
-    background: linear-gradient(145deg, rgba(13, 20, 33, 0.85), rgba(26, 31, 58, 0.7));
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(79, 195, 247, 0.25);
-    border-radius: 16px;
-    box-shadow: 
-      0 20px 50px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(79, 195, 247, 0.1),
-      0 0 40px rgba(33, 150, 243, 0.05);
-    z-index: 0;
-  }
-
-  h1 {
-    margin-bottom: 2rem;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--text-color);
-    text-align: center;
-    background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--code-blue));
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradient-shift 4s ease-in-out infinite;
-    position: relative;
-    font-family: 'JetBrains Mono', monospace;
-    text-shadow: 0 0 30px rgba(79, 195, 247, 0.3);
-  }
-
-  @keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-
-  h1::after {
-    content: '';
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-    border-radius: 2px;
-    box-shadow: 
-      0 0 15px rgba(79, 195, 247, 0.6),
-      0 0 30px rgba(3, 218, 198, 0.3);
-    animation: pulse-glow 2s ease-in-out infinite alternate;
-  }
-
-  @keyframes pulse-glow {
-    from { box-shadow: 0 0 15px rgba(79, 195, 247, 0.6), 0 0 30px rgba(3, 218, 198, 0.3); }
-    to { box-shadow: 0 0 25px rgba(79, 195, 247, 0.8), 0 0 50px rgba(3, 218, 198, 0.5); }
-  }
-
-  .odev-link {
-    position: relative;
-    display: block;
-    width: 400px;
-    background: linear-gradient(135deg, rgba(79, 195, 247, 0.08), rgba(33, 150, 243, 0.05));
-    backdrop-filter: blur(10px);
-    padding: 1.3rem 1.8rem;
-    margin-bottom: 1rem;
-    border-radius: 12px;
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 600;
-    font-size: 1.05rem;
-    font-family: 'JetBrains Mono', monospace;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(79, 195, 247, 0.2);
-    box-shadow: 
-      0 4px 15px rgba(0, 0, 0, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    overflow: hidden;
-  }
-
-  .odev-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(79, 195, 247, 0.15), rgba(3, 218, 198, 0.1), transparent);
-    transition: left 0.6s ease;
-  }
-
-  .odev-link:hover::before {
-    left: 100%;
-  }
-
-  .odev-link:hover {
-    background: linear-gradient(135deg, rgba(26, 31, 58, 0.8), rgba(79, 195, 247, 0.12));
-    transform: translateY(-3px) translateX(8px);
-    box-shadow: 
-      0 10px 30px rgba(0, 0, 0, 0.25),
-      0 0 25px rgba(79, 195, 247, 0.4),
-      0 0 50px rgba(3, 218, 198, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    border-color: var(--primary-color);
-    color: #ffffff;
-  }
-
-  .odev-link::after {
-    content: '▶';
-    position: absolute;
-    right: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.1rem;
-    color: var(--primary-color);
-    transition: all 0.3s ease;
-    text-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
-  }
-
-  .odev-link:hover::after {
-    transform: translateY(-50%) translateX(6px);
-    color: var(--accent-color);
-    text-shadow: 0 0 15px rgba(3, 218, 198, 0.8);
-  }
-
-  /* Sağ panel tooltip */
-  .tooltip-panel {
-    position: fixed;
-    right: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 1.5rem;
-    width: calc(100% - 580px);
-    min-height: 360px;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    color: var(--text-color);
-    font-size: 1.1rem;
-    line-height: 1.6;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-weight: 500;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  /* Tooltip bağlantıya göre tetiklenecek */
-  .odev-link:hover + .tooltip-panel {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0);
-
-  }
-
-  span {
-    color: var(--highlight-color);
-    font-weight: 700;
-  }
-
-  /* Matrix-style code rain effect */
-  .odev-link:nth-child(2)::before { animation-delay: 0.1s; }
-  .odev-link:nth-child(4)::before { animation-delay: 0.2s; }
-  .odev-link:nth-child(6)::before { animation-delay: 0.3s; }
-  .odev-link:nth-child(8)::before { animation-delay: 0.4s; }
-
-  /* Responsive design */
-  @media (max-width: 1024px) {
-    body {
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-    }
-    
-    .tooltip-bg {
-      position: static;
-      width: 100%;
-      min-height: 200px;
-      transform: none;
-      margin-top: 2rem;
-    }
-    
-    .tooltip-panel {
-      position: static;
-      width: 100%;
-      min-height: auto;
-      transform: none;
-      opacity: 1;
-      pointer-events: all;
-      margin-top: 1rem;
-      background: rgba(79, 195, 247, 0.08);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(79, 195, 247, 0.3);
-      border-radius: 16px;
-    }
-    
-    .odev-link {
-      width: 100%;
-      max-width: 400px;
-    }
-  }
-
-  /* Loading animation */
-  @keyframes slideInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .odev-link {
-    animation: slideInUp 0.6s ease forwards;
-    opacity: 0;
-  }
-
-  .odev-link:nth-child(2) { animation-delay: 0.1s; }
-  .odev-link:nth-child(4) { animation-delay: 0.2s; }
-  .odev-link:nth-child(6) { animation-delay: 0.3s; }
-  .odev-link:nth-child(8) { animation-delay: 0.4s; }
-
-  /* Code-style decoration */
-  h1::before {
-    content: '{ ';
-    color: var(--border-color);
-    opacity: 0.7;
-  }
-
-  h1::after {
-    content: ' }';
-    color: var(--border-color);
-    opacity: 0.7;
-    position: static;
-    width: auto;
-    height: auto;
-    background: none;
-    box-shadow: none;
-    animation: none;
-  }
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erdem's Ödevs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
 <body>
-<div class="tooltip-bg"></div> <!-- Sabit arka plan -->
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary m-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Erdem's Full Stack Yolculuks</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Ana Sayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="odev6_bootstrapproject/">Bootstrap Projesi</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Ödevs
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="odev1_personalwebcard/">Ödev 1 - Kişisel Web Kartı</a></li>
+                                <li><a class="dropdown-item" href="odev2_profilescards/">Ödev 2 - Profil Kartları</a></li>
+                                <li><a class="dropdown-item" href="odev3_interactivecards/">Ödev 3 - İnteraktif Kartlar</a></li>
+                                <li><a class="dropdown-item" href="odev4_flexbox/">Ödev 4 - Flexbox</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="odev5_bootstrap/">Ödev 5 - Bootstrap</a></li>
+                                <li><a class="dropdown-item" href="odev6_bootstrapproject/">Ödev 6 - Bootstrap Projesi</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-<div class="left">
-  <img class="gif" src="https://media1.tenor.com/m/NPeWMu0NNl8AAAAd/cat-typing.gif" alt="Typing Cat" />
-  <h1>Erdem's Ödevs</h1>
+        <!-- Hero Section -->
+        <div class="row justify-content-center m-4">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body p-5 text-center">
+                        <div class="d-flex justify-content-center mb-4">
+                            <img src="https://media1.tenor.com/m/NPeWMu0NNl8AAAAd/cat-typing.gif" 
+                                 class="rounded-circle shadow" width="150" height="150" alt="Coding Cat" />
+                        </div>
+                        <h1 class="display-4 fw-bold mb-4">Erdem's Ödevs</h1>
+                        <p class="lead">HTML, CSS, Bootstrap ile web geliştirme yolculuğum</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  <a class="odev-link" href="odev4_flexbox/">Ödev 4: Flexbox</a>
-  <div class="tooltip-panel">📌 Servis Kartları: 6 hizmet kartı, her biri başlık, açıklama, “Detay” butonu.<br>🎯 Container: flex-direction, wrap, justify-content, align-items, gap kullanılacak.<br>🛠️ Item: flex-basis, flex-grow, align-self; bir kart farklı hizalı olacak.<br>🧩 Yerleşim: flex-wrap ile alt satıra geçebilecek, tüm kartlar eşit yükseklikli.<br>✨ Ekstra: hover efekti, farklı flex-shrink, transition (opsiyonel).
-</div>
+        <!-- Ödev Kartları -->
+        <div class="row g-4 m-4">
+            <!-- Ödev 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">🎯 Ödev 1: Kişisel Web Kartı</h5>
+                        <p class="card-text">HTML ve CSS temellerini kullanarak kişisel tanıtım sayfası oluşturma.</p>
+                        <ul class="list-unstyled small">
+                            <li>✅ HTML5 yapısı</li>
+                            <li>✅ CSS stillendirme</li>
+                            <li>✅ Form tasarımı</li>
+                            <li>✅ Tablo kullanımı</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="odev1_personalwebcard/" class="btn btn-primary w-100">Görüntüle</a>
+                    </div>
+                </div>
+            </div>
 
-  <a class="odev-link" href="odev3_interactivecards/">Ödev 3: Etkileşimli Profil Kartları</a>
-  <div class="tooltip-panel">📌 Etkileşimli Profil Kartları: En az 3 kişilik ekip tanıtımı; her kartta görsel, isim, kısa tanım, buton.<br>🎯 CSS Variables: 3 değişken (renk, gölge, border-radius) tanımlanıp tutarlı kullanılacak.<br>🌟 Box Shadow: Kartlara derinlik; hover’da farklı gölge efekti.<br>🎬 Hover: scale, rotate veya translateY efektleri; transition ile yumuşak geçiş.<br>✨ Tasarım: Modern, temiz görünüm; etkileşimli hover animasyonları; merkezi değişken yönetimi.
-</div>
+            <!-- Ödev 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">👥 Ödev 2: Profil Kartları</h5>
+                        <p class="card-text">CSS combinator'ları ve layout teknikleri ile profil galerisi.</p>
+                        <ul class="list-unstyled small">
+                            <li>✅ CSS Combinator'lar</li>
+                            <li>✅ Hover efektleri</li>
+                            <li>✅ Responsive tasarım</li>
+                            <li>✅ Min/Max boyutlar</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="odev2_profilescards/" class="btn btn-primary w-100">Görüntüle</a>
+                    </div>
+                </div>
+            </div>
 
-  <a class="odev-link" href="odev2_profilescards/">Ödev 2: Profil Kartları</a>
-  <div class="tooltip-panel">📌 Profil Kartları Galerisi: 3 kart; ad, fotoğraf, kısa açıklama, bağlantı.<br>📏 Sabit kart genişliği (300px) ve foto yüksekliği (200px); min/max boyut en az 1 kez.<br>🎯 Hover/focus: outline ve outline-offset ile vurgulama.<br>🛠️ CSS combinator’lar: descendant, child >, adjacent +, general ~ kullanılacak.<br>✨ Tüm stiller harici CSS’te; h2, p, a etiketleri ve section/div yapısı.
-</div>
+            <!-- Ödev 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">✨ Ödev 3: İnteraktif Kartlar</h5>
+                        <p class="card-text">CSS Variables ve gelişmiş animasyonlar ile etkileşimli kartlar.</p>
+                        <ul class="list-unstyled small">
+                            <li>✅ CSS Variables</li>
+                            <li>✅ Box Shadow efektleri</li>
+                            <li>✅ Transform animasyonları</li>
+                            <li>✅ Transition'lar</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="odev3_interactivecards/" class="btn btn-primary w-100">Görüntüle</a>
+                    </div>
+                </div>
+            </div>
 
-  <a class="odev-link" href="odev1_personalwebcard/">Ödev 1: Kişisel Web Kartı</a>
-  <div class="tooltip-panel">📌 Kişisel Tanıtım Sayfası: Tek sayfa web card; isim, unvan, bağlantılar, biyografi, yetenekler, eğitim tablosu, iletişim formu.<br>🛠️ HTML: !DOCTYPE html, head’de title, charset, favicon; içerik main içinde.<br>🎯 CSS: margin, padding, border, yazı stilleri, text-align, text-transform, link, display, position, list-style, table, form tasarımı.<br>✨ Ekstra: Google Font, kutu tasarım, renk uyumu, responsive.<br>📂 Teslim: index.html, style.css, GitHub repo.
-</div>
+            <!-- Ödev 4 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">📐 Ödev 4: Flexbox</h5>
+                        <p class="card-text">Modern CSS Flexbox ile responsive hizmet kartları düzeni.</p>
+                        <ul class="list-unstyled small">
+                            <li>✅ Flexbox Layout</li>
+                            <li>✅ Flex properties</li>
+                            <li>✅ Responsive grid</li>
+                            <li>✅ Auto-sizing</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="odev4_flexbox/" class="btn btn-primary w-100">Görüntüle</a>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Ödev 5 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">🎨 Ödev 5: Bootstrap</h5>
+                        <p class="card-text">Bootstrap framework ile hızlı ve modern web sayfası geliştirme.</p>
+                        <ul class="list-unstyled small">
+                            <li>✅ Bootstrap 5.3.7</li>
+                            <li>✅ Component'lar</li>
+                            <li>✅ Grid system</li>
+                            <li>✅ Responsive design</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="odev5_bootstrap/" class="btn btn-primary w-100">Görüntüle</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ödev 6 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-success">
+                    <div class="card-body">
+                        <h5 class="card-title">🚀 Ödev 6: Bootstrap Projesi</h5>
+                        <p class="card-text">Tüm ödevlerin Bootstrap versiyonları - kapsamlı proje.</p>
+                        <ul class="list-unstyled small">
+                            <li>✅ 4 ödev Bootstrap versiyonu</li>
+                            <li>✅ Modern tasarım</li>
+                            <li>✅ Güncel Bootstrap 5.3.7</li>
+                            <li>✅ Best practices</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="odev6_bootstrapproject/" class="btn btn-success w-100">Görüntüle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center p-4 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <p class="mb-0">&copy; 2024 Erdem Gir - Full Stack Web Geliştirme Yolculuğu</p>
+                    <small class="text-muted">Bu Kutlu Full Stack yolculugunda bana eşlik edenlere ithaf olunur.</small>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 </html>
